@@ -13,7 +13,10 @@ const App = () => {
         <br />
         <Submit />
       </form>
-      <ListToDo />
+      <div className="todo-list">
+        <h2>Stuff I need to do:</h2>
+        <ListToDo />
+      </div>
     </div>
   );
 }

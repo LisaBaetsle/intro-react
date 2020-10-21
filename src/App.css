@@ -60,3 +60,7 @@ button:hover {
 input[type=checkbox] {
   margin-bottom: 20px;
 }
+
+.todo-list ul {
+  list-style: none;
+}

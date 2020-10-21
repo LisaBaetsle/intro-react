@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 
 export default function ListToDo() {
-  const initialTodos = ["Learn React", "Go Rollerskating"];
+  const initialTodos = [
+    {
+      text: "Learn about React",
+      id: 1,
+      isCompleted: false
+    },
+    {
+      text: "Go Rollerskating",
+      id: 2,
+      isCompleted: false
+    }
+  ];
   const [todos, setTodos] = useState(initialTodos);
   return (
     <ul>
       {todos.map((todo) => (
-        <li>
-          <input type="checkbox" /> {todo}
+        <li key={todo.id}>
+          <input type="checkbox" /> {todo.text}
         </li>
       ))}
     </ul>

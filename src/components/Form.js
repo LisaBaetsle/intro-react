@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 
-export default function Form() {
+export default function Form({ tralala }) {
   const inputRef = useRef(); //Make a variable to use one the input so that we can get the user input (input reference)
 
-  function toggleToDo() {
-    const inputElement = inputRef.current; //Take the current user input
-    console.log(inputElement.value); // console log the value of the current user input
-
+  function handleAddToDo() {
+    const inputValue = inputRef.current.value; //Take the current user input
+    if (inputValue === '') return
+    tralala(inputValue)
   }
 
   return (
@@ -17,7 +17,7 @@ export default function Form() {
       placeholder="add some stuff to do"
       />
       <br />
-      <button onClick={toggleToDo}> Add stuff </button>
+      <button type="button" onClick={handleAddToDo}> Add stuff </button>
     </form>
      
   );

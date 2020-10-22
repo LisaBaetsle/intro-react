@@ -17,11 +17,17 @@ const App = () => {
     }
   ];
   const [todos, setTodos] = useState(initialTodos);
+ 
+  function tralala(newToDo) {
+    setTodos(prevToDos => {
+      return [...prevToDos, {id: 1, text: newToDo, isCompleted: false}]
+    })
+  }
   
   return (
     <div className="todo-container">
       <Title />
-      <Form />
+      <Form tralala={tralala}/>
       <div className="todo-list">
         <h2>Stuff I need to do:</h2>
         <ToDoList todos={todos}/>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function ListToDo() {
+export default function ToDoList() {
   const initialTodos = [
     {
       text: "Learn about React",
@@ -18,7 +18,7 @@ export default function ListToDo() {
     <ul>
       {todos.map((todo) => (
         <li key={todo.id}>
-          <input type="checkbox" /> {todo.text}
+          <input type="checkbox" id={todo.id}/> {todo.text}
         </li>
       ))}
     </ul>
@@ -26,4 +26,3 @@ export default function ListToDo() {
 }
 
 //The map() function is used to iterate over an array and manipulate or change data items. In React, the map() function is most commonly used for rendering a list of data to the DOM.
-

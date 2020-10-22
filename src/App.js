@@ -1,21 +1,16 @@
 import React from 'react';
-import Title from './Title';
-import Input from './Input';
-import Submit from './Submit';
-import ListToDo from './ListToDo';
+import Title from './components/Title';
+import Form from './components/Form';
+import ToDoList from './components/ToDoList';
 
 const App = () => {
   return (
     <div className="todo-container">
       <Title />
-      <form>
-        <Input />
-        <br />
-        <Submit />
-      </form>
+      <Form />
       <div className="todo-list">
         <h2>Stuff I need to do:</h2>
-        <ListToDo />
+        <ToDoList />
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 
-export default function Form({ tralala }) {
+export default function Form({ addTodo }) {
   const inputRef = useRef(); //Make a variable to use one the input so that we can get the user input (input reference)
 
   function handleAddToDo() {
     const inputValue = inputRef.current.value; //Take the current user input
     if (inputValue === '') return
-    tralala(inputValue)
+    addTodo(inputValue)
   }
 
   return (

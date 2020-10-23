@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from "uuid";
 import Title from './components/Title';
 import Form from './components/Form';
 import ToDoList from './components/ToDoList';
+
+const LSKEY = "todoApp.todos"; //local storage key
 
 const App = () => {
   const initialTodos = [
@@ -18,16 +21,26 @@ const App = () => {
   ];
   const [todos, setTodos] = useState(initialTodos);
  
-  function tralala(newToDo) {
-    setTodos(prevToDos => {
-      return [...prevToDos, {id: 1, text: newToDo, isCompleted: false}]
-    })
+  // Update the state
+  function addTodo(todo) {
+    setTodos([...todos, { id: uuidv4(), text: todo, completed: false }]);
   }
+
+  //Load our todos
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem(LSKEY))
+    if (storedTodos) setTodos(storedTodos)
+  }, [])
+
+  // Save todos to localStorage, only when todos changes
+  useEffect(() => {
+    window.localStorage.setItem(LSKEY, JSON.stringify(todos));
+  }, [todos]);
   
   return (
     <div className="todo-container">
       <Title />
-      <Form tralala={tralala}/>
+      <Form addTodo={addTodo}/>
       <div className="todo-list">
         <h2>Stuff I need to do:</h2>
         <ToDoList todos={todos}/>

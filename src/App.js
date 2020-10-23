@@ -36,6 +36,14 @@ const App = () => {
   useEffect(() => {
     window.localStorage.setItem(LSKEY, JSON.stringify(todos));
   }, [todos]);
+
+  //Toggle the todos
+  function toggleTodo(id) {
+    const newTodos = [...todos]
+    const todo = newTodos.find(todo => todo.id === id)
+    todo.isCompleted = !todo.isCompleted
+    setTodos(newTodos)
+  }
   
   return (
     <div className="todo-container">
@@ -43,7 +51,7 @@ const App = () => {
       <Form addTodo={addTodo}/>
       <div className="todo-list">
         <h2>Stuff I need to do:</h2>
-        <ToDoList todos={todos}/>
+        <ToDoList todos={todos} toggleTodo={toggleTodo}/>
       </div>
     </div>
   );
